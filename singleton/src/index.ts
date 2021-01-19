@@ -1,7 +1,8 @@
-import { Database } from "./services/Database";
+import CalendarService from "./services/CalendarService";
 
-const client = Database.getClient();
+(async () => {
+  const calService = new CalendarService();
+  const date = await calService.getCurentDatabaseDate();
 
-client.connect();
-
-client.query("SELECT now()").then(console.log).catch(console.error);
+  console.log(date);
+})();

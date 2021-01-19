@@ -15,6 +15,7 @@ export class Database {
 
   public static getClient(): Client {
     if (!Database.client) {
+      console.log("Instance Database");
       Database.client = new Client(clientConfig);
     }
     return Database.client;
