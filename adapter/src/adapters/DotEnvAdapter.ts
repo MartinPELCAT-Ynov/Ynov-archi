@@ -1,7 +1,7 @@
-import { IAdapter } from "../interfaces/IAdapter";
+import { IEnvLoader } from "../interfaces/IEnvLoader";
 import { DotEnvLib } from "./DotEnvLib";
 
-export class DotEnvAdapter implements IAdapter {
+export class DotEnvAdapter implements IEnvLoader {
   private lib: DotEnvLib;
 
   constructor() {

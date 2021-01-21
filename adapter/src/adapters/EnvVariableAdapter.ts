@@ -1,6 +1,7 @@
+import { IEnvLoader } from "../interfaces/IEnvLoader";
 import { EnvVariableLib } from "./EnvVariableLib";
 
-export class EnvVariableAdapter {
+export class EnvVariableAdapter implements IEnvLoader {
   private lib: EnvVariableLib;
 
   constructor() {

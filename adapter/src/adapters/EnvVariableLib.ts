@@ -1,4 +1,4 @@
-import { IAdapter } from "../interfaces/IAdapter";
+import { IEnvLoader } from "../interfaces/IEnvLoader";
 
 export class EnvVariableLib {
   public start(): void {
