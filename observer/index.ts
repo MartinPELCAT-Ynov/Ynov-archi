@@ -1,13 +1,15 @@
 import { PhoneObserver } from "./src/observers/PhoneObserver";
-import { NewProductSubject } from "./src/subjects/NewProductSubject";
+import { ProductSubject } from "./src/subjects/ProductSubject";
 
-const subject = new NewProductSubject();
+const subject = new ProductSubject();
 const newPhoneObserver = new PhoneObserver();
 
 subject.attach(newPhoneObserver);
 
-subject.buyProduct(20);
-subject.buyProduct(26);
-subject.buyProduct(25);
-subject.buyProduct(10);
-subject.buyProduct(10);
+//Trigger message when stock <= 10 , start : 100
+
+subject.buyProduct(20); // 80
+subject.buyProduct(26); // 54
+subject.buyProduct(25); // 29
+subject.buyProduct(10); // 19
+subject.buyProduct(10); // 9
