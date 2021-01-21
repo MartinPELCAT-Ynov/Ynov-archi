@@ -2,9 +2,6 @@ import { IObserver } from "../interfaces/IObserver";
 import { ISubject } from "../interfaces/ISubject";
 
 export class ProductSubject implements ISubject {
-  getName(): string {
-    throw new Error("Method not implemented.");
-  }
   private observers: IObserver[] = [];
 
   private stock: number = 100;
