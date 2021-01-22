@@ -1,26 +1,28 @@
 import express from "express";
+import Koa from "koa";
 import { Email } from "./Email";
 
 const app = express();
+const server = new Koa();
 
 const PORT = 1234;
 
 const spamDomains = ["spamming.com", "mailinator.com", "oneminutemail.com"];
 
-app.get("/", (req, res) => {
+server.use(async (ctx) => {
   try {
-    const email = new Email(req.query.email as string | undefined);
+    const email = new Email(ctx.query.email as string | undefined);
     email.validate();
 
     if (email.isSpam(spamDomains))
-      return res.json({ message: "This email is a spam" });
+      return (ctx.body = { message: "This email is a spam" });
 
-    return res.json({ message: "Email is valid" });
+    return (ctx.body = { message: "Email is valid" });
   } catch (error) {
-    return res.json({ message: error.message });
+    return (ctx.body = { message: error.message });
   }
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
