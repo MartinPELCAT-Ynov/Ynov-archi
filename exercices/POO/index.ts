@@ -1,8 +1,6 @@
-import express from "express";
 import Koa from "koa";
 import { Email } from "./Email";
 
-const app = express();
 const server = new Koa();
 
 const PORT = 1234;
@@ -11,7 +9,7 @@ const spamDomains = ["spamming.com", "mailinator.com", "oneminutemail.com"];
 
 server.use(async (ctx) => {
   try {
-    const email = new Email(ctx.query.email as string | undefined);
+    const email = new Email(ctx.request.query.email as string | undefined);
     email.validate();
 
     if (email.isSpam(spamDomains))
